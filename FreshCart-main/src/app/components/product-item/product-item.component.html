@@ -1,0 +1,43 @@
+<div class="product h-full group hover:-translate-y-[2%]  relative">
+    <span  role="checkbox" class="absolute top-3 end-2 group cursor-pointer ">
+      <i (click)="checkHeart($event,product().id)"  [class.fa-solid]="isChecked" class="fa-regular fa-heart text-[25px] text-main transition-all" ></i>
+    </span>
+    <div class=" cursor-pointer" [routerLink]="['/details',product()._id]" >
+      <img class="object-cover" [src]="product().imageCover" alt="product" />
+
+      <div class="p-3">
+        <h3 class="text-sm text-main">{{ product().category.name }}</h3>
+        <h4>{{ product().title|termText:2}}</h4>
+
+        <div class="flex flex-wrap justify-between ">
+          <span class="text-nowrap">{{ product().price|currency:'GBP' }}</span>
+          <div class="flex  ">
+            @for (item of [0,0,0,0,0].slice(0,product().ratingsAverage) ; track
+            $index) {
+            <span class=" ">
+              <i class=" tracking-tighter text-rating fa fa-star"></i
+            ></span>
+
+            } 
+            @if(product().ratingsAverage%1 !==0){
+
+            <span class=" bg-red ">
+              <i class="text-transparent bg-clip-text fa fa-star"
+                [style]="_ProductsService.getStarFration(product().ratingsAverage) "
+                
+              ></i>
+            </span>
+            }
+            <span class="text-gray-400">{{ product().ratingsAverage }}</span>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div
+        class="p-3 group-hover:translate-y-0 translate-y-[150%] transition-all duration-700"
+      >
+        <button class="btn-main w-full" (click)="addToCart(product().id)">Add to Cart</button>
+      </div>
+  </div>

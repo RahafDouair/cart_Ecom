@@ -1,0 +1,56 @@
+<section class="bg-light rounded-lg shadow p-4 my-4">
+  <h1
+    class="text-4xl font-extrabold text-center my-2 pb-2 border-b-[2px] border-dashed border-black/65"
+  >
+    All Orders
+  </h1>
+  @for (order of orders; track order._id){
+
+    <div [class.bg-white]="$even" class="my-5 rounded-lg overflow-hidden border-main border ">
+      <div class="flex justify-between px-2 text-lg mb-2 font-extrabold text-white py-3 bg-main">
+        <h2>At {{order.paidAt|date:'short'}}</h2>
+        <h2>{{order.totalOrderPrice |currency:"GBP"}} <span class="text-gray-800 shdaow">{{" "+ order.paymentMethodType }}</span>
+        </h2>
+      </div>
+
+      @for (item of order.cartItems ; track item._id) {
+
+        <div 
+        [class.border-b-2]="!$last"
+        class="flex  max-sm:flex-col gap-4  py-3  px-3 ">
+            <div class="md:w-1/12">
+                    <div class="">
+                        <img class="w-full" [src]="item.product.imageCover" [alt]="item.product.title">
+                    </div>                
+            </div>
+            <div class="md:w-11/12 items-center flex flex-wrap justify-between">
+
+                <div class="flex flex-col gap ">
+                    <h3 class="text-lg font-semibold">
+                        {{item.product.title}}
+                    </h3>
+                    <p class="text-main">
+                        Price : {{item.price|currency:'GBP'}}
+                    </p>
+                    
+                </div>
+
+                <div class="ms-auto">
+                    
+                    <span class="px-1 font-extrabold">
+                        {{item.count}}
+                    </span>
+                   
+                 
+                </div>
+
+            </div>
+
+        </div>
+
+      }
+      
+    </div>
+  }
+
+</section>

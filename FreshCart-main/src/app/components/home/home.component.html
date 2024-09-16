@@ -1,0 +1,47 @@
+
+<section class="py-6">
+  <div class="flex rounded-[48px] overflow-hidden shadow-me  ">
+    <div class="w-full  lg:w-9/12">
+      <owl-carousel-o [options]="customOptionsMain">
+
+        @for (img of mainSliderList; track $index) {
+          <ng-template carouselSlide >
+            <img class="max-sm:h-[200px] sm:h-[300px]  object-fill " [src]="img" alt="offer" title="offer">
+          </ng-template>
+        }
+        </owl-carousel-o>
+    </div>
+    <div class=" max-lg:hidden lg:visible lg:w-3/12">
+      <img class="max-sm:h-[100px] sm:h-[150px]" src="./assets/images/grocery-banner.png" alt="banner">
+      <img class="max-sm:h-[100px] sm:h-[150px]" src="./assets/images/grocery-banner-2.jpeg" alt="banner">
+    </div>
+  </div>
+</section>
+<!-- Categories Section -->
+<section class="my-2">
+<h2 class="font-black text-4xl mb-6 text-main">Popular Categories</h2>
+<div class="rounded-[30px] overflow-hidden">
+  <owl-carousel-o [options]="customOptionsCategories">
+
+    @for (category of categoriesList(); track category._id) {
+      <ng-template carouselSlide >
+        <img class="h-80  object-fill " [src]="category.image" [alt]="category.slug" [title]="category.name">
+        <h3 class="text-main text-lg font-medium text-center" >{{category.name}}</h3>
+      </ng-template>
+    }
+    </owl-carousel-o>
+</div>
+</section>
+
+<!-- Products Section -->
+<section class="py-3">
+  <div class=" py-3 rounded-lg">
+    <input  class=" p-2 w-1/2 rounded-md mx-auto  block focus:ring-0  outline-none border-0 border-b-2 border-main  focus:border-main" placeholder="Search By Name ..." type="search" name="search" [(ngModel)]="prouductSearch">
+  </div>
+  <h2 class="text-main my-3 font-black text-4xl pb-2">Popular Products:</h2>
+  <div class="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 gap-7">
+    @for (product of productsList().slice(0,12) |search:prouductSearch ;track product.id) {
+    <app-product-item [isChecked]="hasHeart(product.id)" [product]="product" ></app-product-item>
+    }
+  </div>
+</section>

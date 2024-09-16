@@ -1,0 +1,93 @@
+
+
+<section class="py-4 h-full lg:w-[70%] mx-auto ">
+  <div
+    class="product group hover:-translate-y-[2%] flex max-md:flex-col justify-center items-center"
+  >
+    <div class="md:w-2/4 flex flex-col sm:flex-row" (window:resize)="getSliderDir()" >
+
+      <div class="  sm:w-4/12 my-4 sm:order-first ">
+        <swiper-container
+          #slider
+          class="h-[200px] sm:h-[400px]"
+          pagination="truewhi"
+          effect="coverflow"
+          grab-cursor="true"
+          slides-per-view="auto"
+          coverflow-effect-rotate="50"
+          coverflow-effect-stretch="0"
+          coverflow-effect-depth="100"
+          coverflow-effect-modifier="1"
+          coverflow-effect-slide-shadows="true"
+          autoplay-delay="2000"
+          autoplay-disable-on-interaction="false"
+          loop="true"
+          
+          direction="{{ getSliderDir()}}" 
+                   
+        >
+          @for (item of detailsProduct.images; track $index) {
+          <swiper-slide >
+           <div>
+            <img
+            class="h-[150px] sm:h-auto w-full max-sm:w-1/2 mx-auto  sm:object-contain"
+            [src]="item"
+            alt="item images"
+          />
+           </div>
+          </swiper-slide>
+          }
+        </swiper-container>
+      </div>
+
+      <img 
+        class=" sm:w-7/12 block object-contain order-first "
+        [src]="detailsProduct.imageCover"
+        alt="product"
+      />
+    </div>
+    <div class="cursor-pointer md:w-2/4">
+      <div class="p-3 flex flex-col gap-1">
+        <h2 class="text-4xl">{{ detailsProduct.title }}</h2>
+        <p class="text-gray-400">{{ detailsProduct.description }}</p>
+        <h3 class="text-sm">{{ detailsProduct.category.name }}</h3>
+
+        <div class="flex justify-between">
+          <span class="text-nowrap">{{ detailsProduct.price }}EGP</span>
+          <div class="flex">
+            @for (item of [0,0,0,0,0].slice(0,detailsProduct.ratingsAverage) ;
+            track $index) {
+            <span class=" ">
+              <i class="tracking-tighter text-xl text-rating fa fa-star"></i
+            ></span>
+
+            } @if(detailsProduct.ratingsAverage%1 !==0){
+
+            <span class="bg-red">
+              <i
+                class="text-transparent text-xl bg-clip-text fa fa-star"
+                [style]="
+                  _ProductsServicec.getStarFration(
+                    detailsProduct.ratingsAverage
+                  )
+                "
+              ></i>
+            </span>
+            }
+            <span class="text-gray-400">{{
+              detailsProduct.ratingsAverage
+            }}</span>
+          </div>
+        </div>
+
+        <div
+          class="p-3 mt-3 group-hover:translate-y-0 translate-y-[500%] transition-all duration-1000"
+        >
+          <button (click)="addToCart(detailsProduct.id)" class="btn-main w-full">+ Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

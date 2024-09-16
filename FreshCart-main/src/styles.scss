@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import 'ngx-toastr/toastr';
+
+body{
+    font-family: "Encode Sans Expanded", sans-serif;
+}
+
+.active-link {
+    
+    @apply text-light bg-main rounded-[5px];
+    
+  }
+
+  a:hover {
+
+    @apply  no-underline
+
+  }
+
+
+  .product {
+    @apply border-[2px] border-solid border-main rounded-[5px] ;
+    
+    transition: all 0.5s;
+    overflow: hidden;
+  }
+  
+  .product:hover {
+    box-shadow: 0 0 13px #11bd1168;
+  }
+  
+  .font-sm {
+    font-size: 12px;
+  }
+
+  .btn-main {
+    @apply bg-main;
+    padding: 7px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.5s;
+  }
+  .btn-main:disabled {
+    cursor: not-allowed;
+    background-color: #ccc;
+  }
+  .btn-main:disabled:hover {
+    background-color: #ccc;
+  }
+  .btn-main:hover {
+    background-color: #11bd11;
+  }
+  
+  
+@keyframes my-animte {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: translateX(1000px);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: translateX(68px);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: translateX(0);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: translateX(32px);
+	}
+
+	90% {
+		animation-timing-function: ease-out;
+		transform: translateX(0);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: translateX(8px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: translateX(0);
+	}
+}
+
+.bb{
+  
+  background-image: linear-gradient(to right, rgb(255, 191, 0) 0%,rgb(255, 191, 0) 50%,rgba(255, 191, 0, 0) 50%);
+}
+
+.animate-from-left{
+    animation: my-animte 2s ease 0s 1 normal forwards;
+}
+
+swiper-slide{
+  height: auto !important;
+}
+
+

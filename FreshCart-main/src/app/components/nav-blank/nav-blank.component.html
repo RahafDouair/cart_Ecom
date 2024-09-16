@@ -1,0 +1,175 @@
+
+<nav class="bg-light border-gray-200 dark:bg-gray-900 fixed top-0 w-full z-50">
+  <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4 ">
+    <a
+      class="flex items-center space-x-3 rtl:space-x-reverse pe-1"
+      routerLink="home"
+    >
+      <img src="./assets/images/freshcart-logo.svg" class="h-6" alt=" Logo" />
+    </a>
+
+    
+    <div class="flex items-center ms-auto  md:order-1 space-x-1 md:space-x-0 rtl:space-x-reverse relative ">
+      <button (click)="show(0)" type="button" data-dropdown-toggle="language-dropdown-menu" class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+        
+        @if (currentLang == "en") {
+          <svg class="w-4 h-4 rounded-full " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 3900 3900"><path fill="#b22234" d="M0 0h7410v3900H0z"/><path d="M0 450h7410m0 600H0m0 600h7410m0 600H0m0 600h7410m0 600H0" stroke="#fff" stroke-width="300"/><path fill="#3c3b6e" d="M0 0h2964v2100H0z"/><g fill="#fff"><g id="d"><g id="c"><g id="e"><g id="b"><path id="a" d="M247 90l70.534 217.082-184.66-134.164h228.253L176.466 307.082z"/><use xlink:href="#a" y="420"/><use xlink:href="#a" y="840"/><use xlink:href="#a" y="1260"/></g><use xlink:href="#a" y="1680"/></g><use xlink:href="#b" x="247" y="210"/></g><use xlink:href="#c" x="494"/></g><use xlink:href="#d" x="988"/><use xlink:href="#c" x="1976"/><use xlink:href="#e" x="2470"/></g></svg>
+         (US)
+        }
+        @else {
+         <img class="w-4 h-4 rounded-full " src="./assets/images/Flag_of_Egypt.svg.png" alt="arabic langauge">
+                 (AR)
+        }
+
+      </button>
+      
+      <div #lang  class=" hidden  z-50 absolute top-full my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu">
+        <ul class="py-2 font-medium" role="none">
+          <li [class.bg-light]="_TranslateService.currentLang == 'en' "  (click)="changeLang('en')">
+            <a  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+              <div class="inline-flex items-center">
+                <svg aria-hidden="true" class="h-3.5 w-3.5 rounded-full me-2" xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-us" viewBox="0 0 512 512"><g fill-rule="evenodd"><g stroke-width="1pt"><path fill="#bd3d44" d="M0 0h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z" transform="scale(3.9385)"/><path fill="#fff" d="M0 10h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z" transform="scale(3.9385)"/></g><path fill="#192f5d" d="M0 0h98.8v70H0z" transform="scale(3.9385)"/><path fill="#fff" d="M8.2 3l1 2.8H12L9.7 7.5l.9 2.7-2.4-1.7L6 10.2l.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7L74 8.5l-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 7.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 24.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 21.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 38.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 35.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 52.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 49.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 66.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 63.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9z" transform="scale(3.9385)"/></g></svg>              
+                 (US)
+              </div>
+            </a>
+          </li>
+          <li [class.bg-light]="_TranslateService.currentLang == 'ar' " (click)="changeLang('ar')">
+            <a  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+              <div class="inline-flex items-center">
+                <img class="h-3.5 w-3.5 rounded-full me-2" src="./assets/images/Flag_of_Egypt.svg.png" alt="arabic langauge">
+
+                 (AR)
+              </div>
+            </a>
+          </li>
+         
+          
+        </ul>
+      </div>
+      
+  </div>
+
+    <button
+      id="targetEl"
+      data-collapse-toggle="navbar-default"
+      type="button"
+      class="peer inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+      (click)="show(1)"
+      
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-5 h-5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 17 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15"
+        />
+      </svg>
+    </button>
+
+    <div #navshow class="hidden   w-full md:flex md:w-auto transition-all grow max-md:absolute left-0 top-full bg-light"
+      id="navbar-default"
+    >
+      <ul
+        id="triggerEl"
+        class="font-medium me-auto flex  flex-col gap-[2px] p-4 md:w-fit md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:mt-0 md:border-0"
+      >
+        <li class="m-0">
+          <a
+            routerLink="home"
+            routerLinkActive="active-link"
+            class="block p-1 text-[14px] text-gray-900 rounded"
+            >{{"navbar.home" |translate}}</a
+          >
+        </li>
+        <li class="m-0">
+          <a
+            routerLink="products"
+            routerLinkActive="active-link"
+            class="block p-1 text-[14px] text-gray-900 rounded"
+            >{{"navbar.products" |translate}}</a
+          >
+        </li>
+
+        <li class="m-0">
+          <a
+            routerLink="categories"
+            routerLinkActive="active-link"
+            class="block p-1 text-[14px] text-gray-900 rounded"
+            >{{"navbar.categories" |translate}}</a
+          >
+        </li>
+
+        <li class="m-0">
+          <a
+            routerLink="brands"
+            routerLinkActive="active-link"
+            class="block p-1 text-[14px] text-gray-900 rounded"
+            >{{"navbar.brands" |translate}}</a
+          >
+        </li>
+      </ul>
+      <ul
+        id="triggerEl"
+        class="font-medium ms-auto flex flex-col  w-f gap-1 p-4 md:w-fit md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:mt-0 md:border-0"
+      >
+
+      <li class="m-0 flex gap-2 items-center ">
+        <a
+          routerLink="cart"
+          routerLinkActive="active-link"
+          class=" block p-1 text-gray-900 rounded grow relative"
+        >
+        <i class=" block w-fit  mx-auto  fa-solid fa-cart-shopping">
+
+        </i>
+        <span class="flex h-4 w-4  text-[10px] bg-teal-400 font-semibold text-white rounded-full absolute top-[-8px] start-[-8px]  justify-center items-center">{{cartItems()}}</span>
+
+        </a>
+        |
+        <a
+        routerLink="wishlist"
+        routerLinkActive="active-link text-main fa-solid"
+        class="block p-1 text-gray-900 rounded grow"
+      >
+      <i class="block w-fit  mx-auto fa-regular fa-heart text-[20px]" ></i>
+      </a>
+      </li>
+        <li class="m-0 flex gap-2 items-center">
+         
+
+          <a class="cursor-pointer block text-gray-900 rounded">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+
+          <a class="cursor-pointer block text-gray-900 rounded">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+          <a class="cursor-pointer block text-gray-900 rounded">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a class="cursor-pointer block text-gray-900 rounded">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+        </li>
+
+        <li class="m-0" (click)="_AuthService.logOut()">
+          <a class="block p-1 text-gray-900 rounded cursor-pointer">{{"navbar.signout" |translate}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+

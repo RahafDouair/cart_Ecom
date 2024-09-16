@@ -1,0 +1,69 @@
+<section class="bg-light rounded-lg shadow p-4 my-4">
+    <h1 class="text-4xl font-extrabold text-center ">
+        Shop Cart
+    </h1>
+    
+<div class="flex justify-between items-center">
+    <p class="text-main  font-semibold mb-2">Total Cart Price :{{cartDetails.totalCartPrice|currency:'GBP'}}</p>
+    @if (cartDetails.products?.length??0 >0) {
+        <button  (click)="openAlart()" class="p-1 border-main border text-main  rounded-full shadow-me  hover:bg-main hover:text-white transition-all duration-500 active:bg-green-300">Clear All</button>
+
+    }
+</div>
+    @for (item of cartDetails.products??[]; track item.product.id) {
+        <div 
+        [class.border-b-2]="!$last"
+        class="flex  flex-col sm:flex-row gap-4  py-3 ">
+            <div class="sm:w-1/12">
+                    <div class="">
+                        <img class="w-full" [src]="item.product.imageCover" [alt]="item.product.slug">
+                    </div>                
+            </div>
+            <div class="sm:w-11/12 items-center flex flex-wrap justify-between">
+
+                <div class="flex flex-col gap ">
+                    <h3 class="text-lg font-semibold">
+                        {{item.product.title}}
+                    </h3>
+                    <p class="text-main">
+                        Price : {{item.price|currency:'GBP'}}
+                    </p>
+                    <button (click)="removeItem(item.product.id)" class="text-red-500 hover:opacity-80 w-fit "> 
+                        <i class="fa-regular fa-trash-can text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="ms-auto">
+                    <button 
+                    [disabled]="!isCount"
+                    [class.text-green-700]="!isCount"
+                    (click)="updateCount(item.product.id, item.count+1)" class="text-main  hover:text-green-700 active:text-green-300">
+                        <i class="  fa-solid fa-circle-plus fa-2xl"></i>
+                    </button>
+                    <span class="px-1 font-extrabold">
+                        {{item.count}}
+                    </span>
+                   
+                    <button 
+                    [disabled]="!isCount"
+                    [class.text-green-700]="!isCount"
+                    (click)="updateCount(item.product.id, item.count-1)" class="text-main  hover:text-green-700 active:text-green-300">
+                        <i class="  fa-solid fa-circle-minus fa-2xl"></i>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    }
+    @empty {
+        <div class="w-1/2 mx-auto ">
+            <img class="w-full mx-auto" src="./assets/images/emptyCart.svg" alt="emptyCart">
+        </div>
+    }
+
+    @if (cartDetails.products?.length??0 >0) {
+        <button  [routerLink]="['/orders',cartDetails._id]"  class="p-1 border-main border text-main  rounded-full shadow-me  hover:bg-main hover:text-white transition-all duration-500 active:bg-green-300">Order Now</button>
+
+    }
+</section>

@@ -1,0 +1,98 @@
+<section class="bg-light rounded-lg shadow p-4 my-4">
+
+    <h1 class="text-4xl font-extrabold text-center my-2">
+        Shoping Adress
+    </h1>
+    <form [formGroup]="orders" class="flex flex-col gap-5 my-3" (ngSubmit)="ordersSubmit()" >
+
+        <div class="relative">
+            <textarea
+              formControlName="details"
+              
+              id="floating_outlined_details"
+              [ngClass]="{
+                  'border-red-500': (orders.get('details')?.errors&&(orders.get('details')?.touched||orders.get('details')?.dirty)),
+                  'focus:border-main': !(orders.get('details')?.errors&&(orders.get('details')?.touched||orders.get('details')?.dirty)),
+                  'focus:shadow-[0px_0px_2px_2px_#0aad0a]': !(orders.get('details')?.errors&&(orders.get('details')?.touched||orders.get('details')?.dirty)),
+                  'shadow-[0px_0px_2px_2px_red]': (orders.get('details')?.errors&&(orders.get('details')?.touched||orders.get('details')?.dirty)),
+                  
+              }"
+              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 peer"
+              placeholder=" "
+            ></textarea>
+            <label
+              for="floating_outlined_details"
+              class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-tra dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-main peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+              >details</label
+            >
+      
+            @if(orders.get('details')?.errors&&orders.get('details')?.touched)
+            { 
+                <p class="absolute text-sm text-red-600">details Is Required</p> 
+            }
+          </div>
+
+        <div class="relative">
+            <input
+              formControlName="phone"
+              type="tel"
+              id="floating_outlined_phone"
+              [ngClass]="{
+                  'border-red-500': (orders.get('phone')?.errors&&(orders.get('phone')?.touched||orders.get('phone')?.dirty)),
+                  'focus:border-main': !(orders.get('phone')?.errors&&(orders.get('phone')?.touched||orders.get('phone')?.dirty)),
+                  'focus:shadow-[0px_0px_2px_2px_#0aad0a]': !(orders.get('phone')?.errors&&(orders.get('phone')?.touched||orders.get('phone')?.dirty)),
+                  'shadow-[0px_0px_2px_2px_red]': (orders.get('phone')?.errors&&(orders.get('phone')?.touched||orders.get('phone')?.dirty)),
+                  
+              }"
+              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 peer"
+              placeholder=" "
+            />
+            <label
+              for="floating_outlined_phone"
+              class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-tra dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-main peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+              >phone</label
+            >
+      
+            @if(orders.get('phone')?.errors&&orders.get('phone')?.touched)
+            { @if (orders.get('phone')?.getError('required')) {
+            <p class="absolute text-sm text-red-600">Phone Is Required</p>
+            } @else if (orders.get('phone')?.getError('pattern')) {
+            <p class="absolute text-sm text-red-600">Enter Vaild Phone</p>
+            } }
+          </div>
+
+          <div class="relative">
+            <input
+              formControlName="city"
+              type="text"
+              id="floating_outlined_city"
+              [ngClass]="{
+                  'border-red-500': (orders.get('city')?.errors&&(orders.get('city')?.touched||orders.get('city')?.dirty)),
+                  'focus:border-main': !(orders.get('city')?.errors&&(orders.get('city')?.touched||orders.get('city')?.dirty)),
+                  'focus:shadow-[0px_0px_2px_2px_#0aad0a]': !(orders.get('city')?.errors&&(orders.get('city')?.touched||orders.get('city')?.dirty)),
+                  'shadow-[0px_0px_2px_2px_red]': (orders.get('city')?.errors&&(orders.get('city')?.touched||orders.get('city')?.dirty)),
+                  
+              }"
+              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 peer"
+              placeholder=" "
+            />
+            <label
+              for="floating_outlined_city"
+              class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-tra dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-main peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+              >city</label
+            >
+      
+            @if(orders.get('city')?.errors&&orders.get('city')?.touched)
+            { 
+                <p class="absolute text-sm text-red-600">city Is Required</p> }
+          </div>
+
+    <button  class="p-2 block mx-auto w-fit border-main border text-main  rounded-full shadow-me  hover:bg-main hover:text-white transition-all duration-500 active:bg-green-300"> Check Out </button>
+
+
+    </form>
+
+
+
+
+</section>

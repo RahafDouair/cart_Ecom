@@ -1,0 +1,9 @@
+<section class="py-5">
+    <div class="grid lg:grid-cols-6  md:grid-cols-4 sm:grid-cols-2 gap-7">
+        @for (product of productsList |search:prouductSearch ;track product.id) {
+
+        <app-product-item  [product]="product" [isChecked]="hasHeart(product.id)" ></app-product-item>
+        
+      }
+      </div>
+</section>

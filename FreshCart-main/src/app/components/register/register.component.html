@@ -1,0 +1,226 @@
+<section class="bg-light shadow-me p-2 my-2 rounded-3xl">
+  <h1 class="text-main my-2 text-4xl">Register Now:</h1>
+  <form
+    class="flex flex-col gap-6 py-3 relative overflow-hidden px-2"
+    (ngSubmit)="registerSubmit()"
+    [formGroup]="registerForm"
+  >
+    <div class="relative">
+      <input
+        formControlName="name"
+        type="text"
+        id="floating_outlined"
+        [ngClass]="{
+            'border-red-500': (registerForm.get('name')?.errors&&(registerForm.get('name')?.touched||registerForm.get('name')?.dirty)),
+            'focus:border-main': !(registerForm.get('name')?.errors&&(registerForm.get('name')?.touched||registerForm.get('name')?.dirty)),
+            'focus:shadow-[0px_0px_2px_2px_#0aad0a]': !(registerForm.get('name')?.errors&&(registerForm.get('name')?.touched||registerForm.get('name')?.dirty)),
+            'shadow-[0px_0px_2px_2px_red]': (registerForm.get('name')?.errors&&(registerForm.get('name')?.touched||registerForm.get('name')?.dirty)),
+        }"
+        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 peer"
+        placeholder=" "
+      />
+
+      <label
+        for="floating_outlined"
+        class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-tra dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-main peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+        >Name</label
+      >
+      @if(registerForm.get('name')?.errors&&registerForm.get('name')?.touched) {
+      @if (registerForm.get('name')?.getError('required')) {
+      <p class="absolute text-sm text-red-600">Name Is Required</p>
+      } @else if (registerForm.get('name')?.getError('minlength')) {
+      <p class="absolute text-sm text-red-600">
+        Name Should be More Than Or Equal 3 Chars
+      </p>
+      } @else if (registerForm.get('name')?.getError('maxlength')) {
+      <p class="absolute text-sm text-red-600">
+        Name Should be Less Than Or Equal 20 Chars
+      </p>
+      } }
+    </div>
+    <div class="relative">
+      <input
+        formControlName="email"
+        type="email"
+        id="floating_outlined_email"
+        [ngClass]="{
+            'border-red-500': (registerForm.get('email')?.errors&&(registerForm.get('email')?.touched||registerForm.get('email')?.dirty)),
+            'focus:border-main': !(registerForm.get('email')?.errors&&(registerForm.get('email')?.touched||registerForm.get('email')?.dirty)),
+            'focus:shadow-[0px_0px_2px_2px_#0aad0a]': !(registerForm.get('email')?.errors&&(registerForm.get('email')?.touched||registerForm.get('email')?.dirty)),
+            'shadow-[0px_0px_2px_2px_red]': (registerForm.get('email')?.errors&&(registerForm.get('email')?.touched||registerForm.get('email')?.dirty)),
+        }"
+        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 peer"
+        placeholder=" "
+      />
+      <label
+        for="floating_outlined_email"
+        class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-tra dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-main peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+        >email</label
+      >
+
+      @if(registerForm.get('email')?.errors&&registerForm.get('email')?.touched)
+      { @if (registerForm.get('email')?.getError('required')) {
+      <p class="absolute text-sm text-red-600">Email Is Required</p>
+      } @else if (registerForm.get('email')?.getError('email')) {
+      <p class="absolute text-sm text-red-600">Enter Vaild Email</p>
+      } }
+    </div>
+    <div class="relative">
+      <input
+        formControlName="phone"
+        type="tel"
+        id="floating_outlined_phone"
+        [ngClass]="{
+            'border-red-500': (registerForm.get('phone')?.errors&&(registerForm.get('phone')?.touched||registerForm.get('phone')?.dirty)),
+            'focus:border-main': !(registerForm.get('phone')?.errors&&(registerForm.get('phone')?.touched||registerForm.get('phone')?.dirty)),
+            'focus:shadow-[0px_0px_2px_2px_#0aad0a]': !(registerForm.get('phone')?.errors&&(registerForm.get('phone')?.touched||registerForm.get('phone')?.dirty)),
+            'shadow-[0px_0px_2px_2px_red]': (registerForm.get('phone')?.errors&&(registerForm.get('phone')?.touched||registerForm.get('phone')?.dirty)),
+            
+        }"
+        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 peer"
+        placeholder=" "
+      />
+      <label
+        for="floating_outlined_phone"
+        class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-tra dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-main peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+        >phone</label
+      >
+
+      @if(registerForm.get('phone')?.errors&&registerForm.get('phone')?.touched)
+      { @if (registerForm.get('phone')?.getError('required')) {
+      <p class="absolute text-sm text-red-600">Phone Is Required</p>
+      } @else if (registerForm.get('phone')?.getError('pattern')) {
+      <p class="absolute text-sm text-red-600">Enter Vaild Phone</p>
+      } }
+    </div>
+    <div class="relative">
+      <input
+        formControlName="password"
+        type="password"
+        id="floating_outlined_password"
+        [ngClass]="{
+            'border-red-500': (registerForm.get('password')?.errors&&(registerForm.get('password')?.touched||registerForm.get('password')?.dirty)),
+            'focus:border-main': !(registerForm.get('password')?.errors&&(registerForm.get('password')?.touched||registerForm.get('password')?.dirty)),
+            'focus:shadow-[0px_0px_2px_2px_#0aad0a]': !(registerForm.get('password')?.errors&&(registerForm.get('password')?.touched||registerForm.get('password')?.dirty)),
+            'shadow-[0px_0px_2px_2px_red]': (registerForm.get('password')?.errors&&(registerForm.get('password')?.touched||registerForm.get('password')?.dirty)),
+            
+        }"
+        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 peer"
+        placeholder=" "
+      />
+      <label
+        for="floating_outlined_password"
+        class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-tra dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-main peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+        >password</label
+      >
+      @if(registerForm.get('password')?.errors&&registerForm.get('password')?.touched)
+      { @if (registerForm.get('password')?.getError('required')) {
+      <p class="absolute text-sm text-red-600">Password Is Required</p>
+      } @else if (registerForm.get('password')?.getError('pattern')) {
+      <p class="absolute text-sm text-red-600">Enter Vaild Password</p>
+      } }
+    </div>
+    <div class="relative">
+      <input
+        formControlName="rePassword"
+        type="password"
+        id="floating_outlined_rePassword"
+        [ngClass]="{
+            'border-red-500': (registerForm.get('rePassword')?.errors&&(registerForm.get('rePassword')?.touched||registerForm.get('rePassword')?.dirty)),
+            'focus:border-main': !(registerForm.get('rePassword')?.errors&&(registerForm.get('rePassword')?.touched||registerForm.get('rePassword')?.dirty)),
+            'focus:shadow-[0px_0px_2px_2px_#0aad0a]': !(registerForm.get('rePassword')?.errors&&(registerForm.get('rePassword')?.touched||registerForm.get('rePassword')?.dirty)),
+            'shadow-[0px_0px_2px_2px_red]': (registerForm.get('rePassword')?.errors&&(registerForm.get('rePassword')?.touched||registerForm.get('rePassword')?.dirty)),
+            
+        }"
+        class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-white rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 peer"
+        placeholder=" "
+      />
+      <label
+        for="floating_outlined_rePassword"
+        class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-tra dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-main peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-4 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+        >repassword</label
+      >
+      @if(registerForm.getError('mismatch') &&
+      registerForm.get('rePassword')?.touched) {
+      <p class="absolute text-sm text-red-600">rePassword Is Mis Match</p>
+      }
+    </div>
+    <button [disabled]="registerForm.invalid||isLoading" class="btn-main w-fit self-end">
+      Register @if (isLoading) {
+      <span><i class="fa-solid fa-spinner fa-spin"></i></span>
+      }
+    </button>
+    
+
+  @if (errorMeg) {
+    <div
+    id="toast-danger"
+    [class.animate-from-left]="errorMeg"
+   
+    
+    class="flex -bottom-[10px] absolute  items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800"
+    role="alert"
+  >
+    <div
+      class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200"
+    >
+      <svg
+        class="w-5 h-5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
+        <path
+          d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z"
+        />
+      </svg>
+      <span class="sr-only">Error icon</span>
+    </div>
+    <div class="ms-3 text-sm font-normal">{{ errorMeg }}</div>
+    <button
+      type="button"
+      class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+      data-dismiss-target="#toast-danger"
+      aria-label="Close"
+      (click)="errorMeg=''"
+    >
+      <span class="sr-only">Close</span>
+      <svg
+        class="w-3 h-3"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 14 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+        />
+      </svg>
+    </button>
+  </div>
+  }
+    
+  @if (isSuccess) {
+    <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+      <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+          </svg>
+          <span class="sr-only">Check icon</span>
+      </div>
+      <div class="ms-3 text-sm font-normal">success</div>
+      <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+          <span class="sr-only">Close</span>
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+          </svg>
+      </button>
+  </div>
+  }
+  </form>
+</section>
